@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Thoughtful everyday finds, picked with care. Shop the Little Things collection."
+    />
+    <meta name="theme-color" content="#f8f7f3" />
+    <title>Little Things — good finds for everyday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">
+      A little treat: free shipping on orders over $100 <span aria-hidden="true">✳</span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Little Things home">
+        <span class="brand-mark" aria-hidden="true">l.</span>
+        <span>little things<span class="brand-period">.</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#shop">Shop all</a>
+        <a href="#our-story">Our story</a>
+      </nav>
+      <button class="cart-trigger" id="cart-trigger" type="button" aria-label="Open shopping bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 8h14l1 12H4L5 8Z" />
+          <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+        </svg>
+        <span>Bag</span>
+        <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> THE EVERYDAY EDIT</span>
+          <h1 id="hero-title">Good things.<br />Just because<span class="hero-asterisk">*</span></h1>
+          <p>Thoughtful little finds to make the everyday feel a bit more special.</p>
+          <a class="button button-dark" href="#shop">Find your something <span aria-hidden="true">↗</span></a>
+          <span class="hero-footnote">*Sometimes the little things are the big things.</span>
+        </div>
+        <div class="hero-art" aria-label="A curated selection of everyday objects">
+          <div class="hero-photo hero-photo-one"></div>
+          <div class="hero-photo hero-photo-two"></div>
+          <div class="hero-note"><span>CURATED WITH CARE</span><span>FOR YOUR EVERYDAY <span aria-hidden="true">✳</span></span></div>
+          <div class="hero-sticker" aria-hidden="true">a little<br />something<br /><span>good</span></div>
+        </div>
+      </section>
+
+      <section class="shop-section" id="shop" aria-labelledby="shop-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">THE GOOD STUFF</span>
+            <h2 id="shop-title">A few of our favorites<span class="heading-period">.</span></h2>
+          </div>
+          <p>Useful, lovely, and just a little unexpected.</p>
+        </div>
+        <div class="filter-row" id="filters" aria-label="Filter products by category">
+          <button class="filter-button active" type="button" data-category="All" aria-pressed="true">Everything <span id="all-count"></span></button>
+          <button class="filter-button" type="button" data-category="Audio" aria-pressed="false">Audio</button>
+          <button class="filter-button" type="button" data-category="Accessories" aria-pressed="false">Accessories</button>
+          <button class="filter-button" type="button" data-category="Footwear" aria-pressed="false">Footwear</button>
+          <button class="filter-button" type="button" data-category="Tech" aria-pressed="false">Tech</button>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite">
+          <p class="loading-message">Finding the good stuff…</p>
+        </div>
+      </section>
+
+      <section class="story-section" id="our-story">
+        <span class="story-flower" aria-hidden="true">✳</span>
+        <span class="eyebrow">A NOTE FROM US</span>
+        <p>We believe a well-loved everyday thing can turn an ordinary Tuesday into <em>your kind of day.</em></p>
+        <span class="story-signoff">That’s the whole idea. <span aria-hidden="true">♡</span></span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="/" aria-label="Little Things home">
+        <span class="brand-mark" aria-hidden="true">l.</span><span>little things<span class="brand-period">.</span></span>
+      </a>
+      <span>Good finds, good days. © <span id="year"></span> Little Things.</span>
+      <a href="#shop">Back to the good stuff ↑</a>
+    </footer>
+
+    <div class="overlay" id="cart-overlay" hidden>
+      <button class="overlay-scrim" type="button" data-close-cart aria-label="Close shopping bag"></button>
+      <aside class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="panel-heading">
+          <div><span class="eyebrow">YOUR GOOD FINDS</span><h2 id="cart-title">Your bag <span id="panel-count">(0)</span></h2></div>
+          <button class="icon-button" type="button" data-close-cart aria-label="Close shopping bag">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-empty" id="cart-empty">
+          <span class="empty-bag" aria-hidden="true">♡</span>
+          <h3>Room for something good.</h3>
+          <p>Your bag is taking a little breather.</p>
+          <button class="button button-dark" type="button" data-close-cart>Have a look around</button>
+        </div>
+        <div class="cart-footer" id="cart-footer">
+          <div class="shipping-note" id="shipping-note"></div>
+          <div class="subtotal-row"><span>Subtotal</span><strong id="cart-total">$0.00</strong></div>
+          <p class="tax-note">Shipping and taxes are figured out at checkout.</p>
+          <button class="button button-dark checkout-button" id="checkout-button" type="button">A little checkout <span aria-hidden="true">→</span></button>
+          <span class="secure-note">A safe, no-pressure order preview</span>
+        </div>
+      </aside>
+    </div>
+
+    <div class="modal-backdrop" id="checkout-modal" hidden>
+      <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+        <button class="icon-button modal-close" type="button" id="close-checkout" aria-label="Close checkout preview">×</button>
+        <div class="checkout-content" id="checkout-content">
+          <span class="checkout-flower" aria-hidden="true">✳</span>
+          <span class="eyebrow">LOOKS LIKE A GOOD CHOICE</span>
+          <h2 id="checkout-title">Your little haul.</h2>
+          <p class="checkout-intro">One last look at the lovely things in your bag.</p>
+          <div class="checkout-lines" id="checkout-lines"></div>
+          <div class="checkout-total"><span>Total</span><strong id="checkout-total">$0.00</strong></div>
+          <p class="tax-note">Shipping and taxes aren’t included in this preview.</p>
+          <button class="button button-dark checkout-button" id="place-order-button" type="button">Place pretend order <span aria-hidden="true">→</span></button>
+          <span class="secure-note">Just a demo — no payment will be taken.</span>
+        </div>
+        <div class="order-success" id="order-success" hidden>
+          <span class="success-flower" aria-hidden="true">✳</span>
+          <span class="eyebrow">A LITTLE SOMETHING GOOD</span>
+          <h2>Consider it yours.</h2>
+          <p id="success-message">Your demo order is all wrapped up. Thanks for shopping small.</p>
+
+          <div class="receipt" id="receipt" aria-live="polite">
+            <div class="receipt-header">
+              <span class="receipt-label">Order receipt</span>
+              <span class="receipt-meta" id="receipt-order-id">#LT-0000</span>
+            </div>
+            <div class="receipt-subheader">
+              <span id="receipt-date">Today</span>
+              <span id="receipt-count">0 items</span>
+            </div>
+            <div class="receipt-lines" id="receipt-lines"></div>
+            <div class="receipt-summary">
+              <div>
+                <span>Subtotal</span>
+                <strong id="receipt-subtotal">$0.00</strong>
+              </div>
+              <div>
+                <span>Shipping</span>
+                <strong id="receipt-shipping">Free</strong>
+              </div>
+              <div class="receipt-total">
+                <span>Total</span>
+                <strong id="receipt-total">$0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <button class="button button-dark" id="continue-shopping" type="button">Back to the good stuff</button>
+        </div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
